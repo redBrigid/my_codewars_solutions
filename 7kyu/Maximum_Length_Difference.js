@@ -13,8 +13,10 @@
 // output: number as a string
 
 function mxdiflg(a1, a2) {
-    if (a1 === [] || a2 === []) return -1
+    if (!a1 || !a2) return -1
     let x = a1.map(el => { return Number(el.length) }).sort((a, b) => { return a - b })
     let y = a2.map(el => { return Number(el.length) }).sort((a, b) => { return a - b })
-    return y[y.length - 1] - x[0] > x[x.length - 1] - y[0] ? y[y.length - 1] - x[0] : x[x.length - 1] - y[0]
+    let answer = y[y.length - 1] - x[0] > x[x.length - 1] - y[0] ? y[y.length - 1] - x[0] : x[x.length - 1] - y[0]
+    if (isNaN(answer)) answer = -1
+    return answer
 }
